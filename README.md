@@ -22,8 +22,12 @@ Right now this project is being built during [Mozilla Open Leadership Training 2
 
 Also, you can check out the Project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md).
 
+Finally, check out the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for more details.
+
 More info coming very soon, ok?
 
 ### Participation Guidelines
+
+Oh yeah, those are important!
 
 We are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
