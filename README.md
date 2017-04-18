@@ -20,6 +20,8 @@ If you like using or teaching R than you can help us!
 
 Right now this project is being built during [Mozilla Open Leadership Training 2017](https://mozilla.github.io/open-leadership-training-series/), and will welcome contributors very soon. But if you found it to be interested, don't wait, and [feel free to say hi here](https://github.com/marcosvital/teach-R-project/issues/1).
 
+Also, you can check out the Project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md).
+
 More info coming very soon, ok?
 
 ### Participation Guidelines
