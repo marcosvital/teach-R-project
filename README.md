@@ -31,3 +31,9 @@ More info coming very soon, ok?
 Oh yeah, those are important!
 
 We are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
+
+### Project Logo!
+
+Thanks to [@graciellehigino](graciellehigino) we now have a logo:
+
+![Teach-R Logo](https://github.com/marcosvital/teach-R-project/blob/master/TeachR.png)
