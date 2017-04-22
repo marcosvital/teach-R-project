@@ -18,19 +18,15 @@ The idea is to create a snowball-like effect: as more scientists, lectures and s
 
 If you like using or teaching R than you can help us!
 
-Right now this project is being built during [Mozilla Open Leadership Training 2017](https://mozilla.github.io/open-leadership-training-series/), and will welcome contributors very soon. But if you found it to be interested, don't wait, and [feel free to say hi here](https://github.com/marcosvital/teach-R-project/issues/1).
+You should start by saying ["hello" here](https://github.com/marcosvital/teach-R-project/issues/1), and talking a little bit about yourself if you like. Next, take a look the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for some more details on what kind of help this project needs. Oh, you can also chek out the project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md) and it tells more about the project progress. 
 
-Also, you can check out the Project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md).
-
-Finally, check out the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for more details.
-
-More info coming very soon, ok?
+**Hey, even if you are not geting involved you can help** a lot just by spreading the word about the project, so others can join and help! [This link from Mozilla Pulse](https://www.mozillapulse.org/entry/238) is a nice way of sharing. Thanks!
 
 ### Participation Guidelines
 
 Oh yeah, those are important!
 
-We are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
+This project is being built during [Mozilla Open Leadership Training 2017](https://mozilla.github.io/open-leadership-training-series/), and we are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
 
 ### Project Logo!
 
