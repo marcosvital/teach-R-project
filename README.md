@@ -18,7 +18,7 @@ The idea is to create a snowball-like effect: as more scientists, lectures and s
 
 If you like using or teaching R than you can help us!
 
-You should start by saying ["hello" here](https://github.com/marcosvital/teach-R-project/issues/1), and talking a little bit about yourself if you like. Next, take a look the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for some more details on what kind of help this project needs. Oh, you can also chek out the project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md) and it tells more about the project progress. 
+You should start by saying ["hello" here](https://github.com/marcosvital/teach-R-project/issues/1), and talking a little bit about yourself if you like - or you can mail me at marcosvital at gmail, and I'll be happy to chat about the project. Next, take a look the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for some more details on what kind of help this project needs. Oh, you can also chek out the project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md) and it tells more about the project progress. 
 
 **Hey, even if you are not geting involved you can help** a lot just by spreading the word about the project, so others can join and help! [This link from Mozilla Pulse](https://www.mozillapulse.org/entry/238) is a nice way of sharing. Thanks!
 
