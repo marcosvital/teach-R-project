@@ -1,5 +1,7 @@
 # The Open Teach-R Project!
 
+[![Join the chat at https://gitter.im/teach-R-project/Lobby](https://badges.gitter.im/teach-R-project/Lobby.svg)](https://gitter.im/teach-R-project/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Welcome!
 
 ### What is it about?
