@@ -32,6 +32,6 @@ This project is being built during [Mozilla Open Leadership Training 2017](https
 
 ### Project Logo!
 
-Thanks to [@graciellehigino](graciellehigino) we now have a logo:
+Thanks to [@graciellehigino](https://github.com/graciellehigino) we now have a logo:
 
 ![Teach-R Logo](https://github.com/marcosvital/teach-R-project/blob/master/TeachR.png)
