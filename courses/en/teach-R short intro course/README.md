@@ -13,7 +13,7 @@ This is a short and introductory R course aimed at Biological Sciences students 
 **Course resources:**
 
 - instructor guide + RMarkdown source code for the guide;
-- presentation slides;
+- [presentation slides](https://github.com/marcosvital/teach-R-project/blob/master/courses/en/teach-R%20short%20intro%20course/Teach-R%20short%20course%20-%20slides%20-%20under%20construction.pdf);
 - R instructions for instructor and participants + RMarkdown source code;
 - databases used in the course.
 
