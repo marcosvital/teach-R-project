@@ -1,0 +1,44 @@
+---
+title: "A short and friendly R introduction - instructor guide"
+output: html_document
+---
+
+**[Marcos V C Vital](https://marcosvital.github.io)**
+
+*This document was built under R `r getRversion()` and RStudio.Version()$version, and was last update on `r Sys.time()`* 
+
+This guide is part of the [Open Teach-R Project](https://github.com/marcosvital/teach-R-project), and can be freely shared and is open to modification: we only ask you to keep information about the original source. Now, if you are looking at this without knowing what this project is – maybe someone send it to you by email or you found it elsewhere  – worry not! Take a look at the [project repo at GitHub](https://github.com/marcosvital/teach-R-project) for more info, and while doing that, remember to check if you are looking at the latest version of this particular course.
+
+\ 
+
+***
+
+\ 
+
+### Using R for the very first time
+
+Using R for the first time can be a little intimidating, especially if you have never used any kind of command line interface before. I know the feel: you open the program, start looking at the cursor blinking in the first line, and feels as if it is asking you “now, what?”, and you just don’t know what to say… But it is easier than you think, really! R is a language, so you just have to type something that makes sense to it, and it will talk back to you. Since R understand math, you can start off with something simple, so go ahead, type a simple math operation (such as a simple addition) and type enter. You will see something like this:
+
+```{r}
+10 + 10
+```
+
+That was easy, right?
+
+Go ahead and try a few more operations. You can to use `/` for divisions and `*` for multiplications:
+
+```{r}
+5-30
+
+5*5
+
+17/3
+```
+
+Oh, you can also use `^`to assign a power operation, just like this:
+
+```{r}
+3^2
+```
+
+*this is under construction*

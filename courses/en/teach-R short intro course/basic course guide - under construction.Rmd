@@ -1,0 +1,35 @@
+---
+title: "A short and friendly R introduction - instructor guide"
+output: html_document
+---
+
+**[Marcos V C Vital](https://marcosvital.github.io)**
+
+*This document was built under R `r getRversion()` and RStudio.Version()$version, and was last update on `r Sys.time()`* 
+
+This guide is part of the [Open Teach-R Project](https://github.com/marcosvital/teach-R-project), and can be freely shared and is open to modification: we only ask you to keep information about the original source. Now, if you are looking at this without knowing what this project is – maybe someone send it to you by email or you found it elsewhere  – worry not! Take a look at the [project repo at GitHub](https://github.com/marcosvital/teach-R-project) for more info, and while doing that, remember to check if you are looking at the latest version of this particular course.
+
+\ 
+
+***
+
+\ 
+
+###About this guide
+
+So, you want to teach an R course, uh? Well, that’s awesome, and this project was created to help you! This small course was designed to work both as a very short and friendly introduction to R for Biological Science students and researchers and as simple model for what kind of material a course inside the Open Teach-R Project could (or should) have.
+
+OK, so let’s get things done! If you want to teach this course, you are at right place. Go through this guide as you take a look at the course resources:
+
+- presentation slides;
+- course R script (and source code in RMarkdwon);
+- data;
+- the source code in RMarkdown for this guide.
+
+**The presentation slides**
+
+I built those slides considering that this course might be the first contact that the participants have with R, so I spend some time explaining a little bit of R history, format and purpose. Personally, I find that teaching at least a little bit of history and background behind methods and tools is usually very useful for learning, as the students can understand why things are the way they are.
+
+The slides are mostly self-explanatory, so I’ll just comment a few points here:
+
+*this is under construction*
