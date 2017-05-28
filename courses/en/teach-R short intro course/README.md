@@ -12,9 +12,9 @@ This is a short and introductory R course aimed at Biological Sciences students 
 
 **Course resources:**
 
-- instructor guide + RMarkdown source code for the guide;
+- [instructor guide](https://rawgit.com/marcosvital/teach-R-project/master/courses/en/teach-R%20short%20intro%20course/basic_course_guide%20-%20under%20construction.html) + [RMarkdown source code for the guide](https://raw.githubusercontent.com/marcosvital/teach-R-project/master/courses/en/teach-R%20short%20intro%20course/basic%20course%20guide%20-%20under%20construction.Rmd);
 - [presentation slides](https://github.com/marcosvital/teach-R-project/blob/master/courses/en/teach-R%20short%20intro%20course/Teach-R%20short%20course%20-%20slides%20-%20under%20construction.pdf);
-- R instructions for instructor and participants + RMarkdown source code;
+- [R script for instructor and participants](https://rawgit.com/marcosvital/teach-R-project/master/courses/en/teach-R%20short%20intro%20course/basic_course_script%20-%20under%20construction.html) + [RMarkdown source code](https://raw.githubusercontent.com/marcosvital/teach-R-project/master/courses/en/teach-R%20short%20intro%20course/basic%20course%20script%20-%20under%20construction.Rmd);
 - databases used in the course.
 
 *Links will be added to resources as the course is being built; if this message is still here, than the course is still under construction, and all available material is probably incomplete...*
