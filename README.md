@@ -12,7 +12,8 @@ R is an amazing open tool for data analysis and visualization, but it is known t
 
 ### Why?
 
-We want more people using R: it is an awesome tool for Open Science orientated research, there is already a huge community of users and developers and once the user gest used to its basic principles it turns out to be very easy to learn new techniques. To help getting more people using it we want to break the initial learning barrier, and we want do this making it easier for the more experienced users to teach R to beginners.
+We want more people using R: it is an awesome tool for Open Science orientated research, there is already a huge community of users and developers and once the user gest used to its basic principles it turns out to be very easy to learn new techniques.
+To help get more people using it we want to break the initial learning barrier, and we want do this making it easier for the more experienced users to teach R to beginners.
 
 The idea is to create a snowball-like effect: as more scientists, lectures and students learn how to use R and get more experienced, they will be able to find hands on material to teach it, helping to spread the R open magic among more and more people!
 
@@ -20,7 +21,8 @@ The idea is to create a snowball-like effect: as more scientists, lectures and s
 
 If you like using or teaching R than you can help us!
 
-You should start by saying ["hello" here](https://github.com/marcosvital/teach-R-project/issues/1), and talking a little bit about yourself if you like - or you can mail me at marcosvital at gmail, and I'll be happy to chat about the project. We also have a Gitter room, [so we can chat there](https://gitter.im/teach-R-project/Lobby)!  Next, take a look the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for some more details on what kind of help this project needs. Oh, you can also chek out the project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md) and it tells more about the project progress. 
+You should start by saying ["hello" here](https://github.com/marcosvital/teach-R-project/issues/1), and talking a little bit about yourself if you like - or you can mail me at marcosvital at gmail, and I'll be happy to chat about the project. We also have a Gitter room, [so we can chat there](https://gitter.im/teach-R-project/Lobby)!  Next, take a look the [CONTRIBUTING file here](https://github.com/marcosvital/teach-R-project/blob/master/CONTRIBUTING.md) for some more details on what kind of help this project needs. 
+Oh, you can also check out the project Roadmap, it is being built [right here](https://github.com/marcosvital/teach-R-project/blob/master/ROADMAP.md) and it tells more about the project progress. 
 
 **Hey, even if you are not geting involved you can help** a lot just by spreading the word about the project, so others can join and help! [This link from Mozilla Pulse](https://www.mozillapulse.org/entry/238) is a nice way of sharing. Thanks!
 
