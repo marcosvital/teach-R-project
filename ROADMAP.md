@@ -1,10 +1,11 @@
 ## Roadmap
 
-This is the [Roadmap](https://mozilla.github.io/open-leadership-training-series/articles/opening-your-project/start-your-project-roadmap/#assignment--make-a-project-roadmap) for the Open Teach R Project. We want to build and gather togeter organized courseware to anyone willing to offer a R based data analysis course for Biological Sciences students and researchers.
+This is the [Roadmap](https://mozilla.github.io/open-leadership-training-series/articles/opening-your-project/start-your-project-roadmap/#assignment--make-a-project-roadmap) for the Open Teach R Project. 
+We want to build and gather together organized courseware to anyone willing to offer an R based data analysis course for Biological Sciences students and researchers.
 
-The project initial ideia can be found here at this [Open Canvas](https://docs.google.com/presentation/d/1ZDKzSF64HmPM8T45r_moJw2Rxz1T22HpjAn8SvtzW4M/edit?usp=sharing).
+The project initial idea can be found here at this [Open Canvas](https://docs.google.com/presentation/d/1ZDKzSF64HmPM8T45r_moJw2Rxz1T22HpjAn8SvtzW4M/edit?usp=sharing).
 
-This project is being built during [Mozilla Open Leadership Training](https://mozilla.github.io/open-leadership-training-series/) 2017, and will be part of [the awesome Global Sprint to be hel in June](https://mozilla.github.io/global-sprint/).
+This project is being built during [Mozilla Open Leadership Training](https://mozilla.github.io/open-leadership-training-series/) 2017, and will be part of [the awesome Global Sprint to be held in June](https://mozilla.github.io/global-sprint/).
 
 ### Project Milestones
 
