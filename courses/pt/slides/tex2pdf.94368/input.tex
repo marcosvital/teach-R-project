@@ -1,0 +1,245 @@
+\documentclass[11pt,ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+\ifxetex
+\usepackage{mathspec}
+\else
+\usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+\usetheme{metropolis}
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\newif\ifbibliography
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+\let\insertpartnumber\relax
+\let\partname\relax
+\frame{\partpage}
+}
+\AtBeginSection{
+\ifbibliography
+\else
+\let\insertsectionnumber\relax
+\let\sectionname\relax
+\frame{\sectionpage}
+\fi
+}
+\AtBeginSubsection{
+\let\insertsubsectionnumber\relax
+\let\subsectionname\relax
+\frame{\subsectionpage}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Allowing for slides with 2 columns
+\def\begincols{\begin{columns}[c]}
+\def\endcols{\end{columns}}
+\def\begincol{\begin{column}{0.5\textwidth}}
+\def\endcol{\end{column}}
+
+
+
+% Reducing black space between R code and output
+% \setlength{\topsep}{0pt}{}
+\setlength{\emergencystretch}{0em}
+\setlength{\parskip}{2pt}
+\setlength{\partopsep}{1pt}
+
+
+%%% Reducing font size of R code and output
+%%% code below from http://stackoverflow.com/a/38324868
+%%% see also http://stackoverflow.com/a/39961605
+
+% %% change fontsize of R code
+% \let\oldShaded\Shaded
+% \let\endoldShaded\endShaded
+% \renewenvironment{Shaded}{\footnotesize\oldShaded}{\endoldShaded}
+%
+% %% change fontsize of output
+% \let\oldverbatim\verbatim
+% \let\endoldverbatim\endverbatim
+% \renewenvironment{verbatim}{\footnotesize\oldverbatim}{\endoldverbatim}
+% %%%
+
+
+% code below taken from D. Eddelbuettel
+% https://github.com/eddelbuettel/samples-rmarkdown-metropolis/blob/master/header.tex
+
+%% If you have the Fira font installed, to actually have it used it
+%% via rmarkdown you need to declare it here
+% \setsansfont[ItalicFont={Fira Sans Light Italic},BoldFont={Fira Sans},BoldItalicFont={Fira Sans Italic}]{Fira Sans Light}
+% \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}
+% FRS: but this seems not able to print equations well...
+% \setsansfont{CabritoSemiNormRegular}
+% \setmonofont{Ubuntu Mono}
+
+%% You can set various Metropolis options via \metroset{} here
+\metroset{numbering=counter, progressbar=frametitle}
+
+% https://tex.stackexchange.com/questions/54905/how-to-modify-default-beamercolortheme
+
+%% You can redefine colours, mostly by borrowing from Beamer
+\setbeamercolor{frametitle}{bg=teal}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{background}{bg=white}
+\setbeamercolor{progress bar}{%
+ use=alerted text,
+ fg=orange,
+ bg=teal
+ }
+ \setbeamercolor{title separator}{
+ use=progress bar,
+ parent=progress bar
+ }
+ \setbeamercolor{progress bar in head/foot}{%
+ use=progress bar,
+ parent=progress bar
+ }
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=teal}
+% \setbeamercolor{example text}{fg=green!50!black}
+% \setbeamercolor{structure}{fg=beamer@blendedblue}
+% \setbeamercolor{background canvas}{parent=normal text}
+% \setbeamercolor{background}{parent=background canvas}
+
+
+%% You also use hyperref, and pick colors
+\hypersetup{colorlinks,citecolor=gray,filecolor=gray,linkcolor=gray,urlcolor=brown}
+
+%% when rendered with rmarkdown, somehow the unicode char for the dot
+%% disappears so we redefine it here
+% \renewcommand{\textbullet}{$\cdot$}
+% \renewcommand{\itemBullet}{▸}   % unicode U+25b8 'black right pointing small triangle'
+
+%% The institute macro puts a small line for affiliation at the bottom
+\institute{Universidade Federal de Goiás \\ Programa de Pós-Graduação em Ecologia e Evolução}
+
+%% We can also place a logo
+%\titlegraphic{\hfill\includegraphics[height=1cm]{someLogo.pdf}}
+
+\title{Nicho integrado e o papel das interações nos padrões de biodiversidade}
+\author{Gracielle Higino\\
+Orientador: Paulo De Marco Jr.}
+\date{02 de maio de 2017}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{\textbf{Introdução}}
+
+Distribuição espacial da diversidade de espécies
+
+\begin{itemize}
+\tightlist
+\item
+  Ambiente\\
+\item
+  Recursos\\
+\item
+  Evolução
+\end{itemize}
+
+~~~~~~\textbf{INTERAÇÕES}
+
+\end{frame}
+
+\begin{frame}{\textbf{Introdução}}
+
+Nicho integrado\footnote<.->{GRAVEL et al. (2016)}\\
+\[P(X_{iy},X_{jy},L_{ijy}|E_{y}) = P(X_{iy},X_{jy}|E_{y})\times P(L_{ijy}|X_{iy},X_{jy},E_{y})\]
+
+Probabilidade de interação\footnote<.->{POISOT, STOUFFER e GRAVEL (2015)}\\
+\[P(L_{ijy}|X_{iy},X_{jy},E_{y}) \propto \mathcal{T}(i,j) \times \mathcal{N}(i, j) + \epsilon\]\\
+Tipos de interação\\
+Fatores que influenciam a co-ocorrência no espaço geográfico\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\textbf{competição}
++ \textbf{dispersão}
+
+\end{frame}
+
+\begin{frame}{\textbf{Objetivos}}
+
+\begin{itemize}
+\tightlist
+\item
+  Como as interações interespecíficas, ao variarem com os fatores
+  ambientais, influenciam na distribuição das espécies?\\
+  \includegraphics{"images/fig1.jpg"}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{\textbf{Objetivos}}
+
+\begin{itemize}
+\tightlist
+\item
+  O modelo de nicho integrado é capaz de prever estas mudanças?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{\textbf{Métodos}}
+
+Ecologia Virtual\\
+Metaweb
+
+\end{frame}
+
+\begin{frame}{É isso!}
+
+\textbf{Referências}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Gravel2016a}{}
+GRAVEL, D. et al.Bringing Elton and Grinnell together: a quantitative
+framework to represent the biogeography of ecological interaction
+networks. \textbf{bioRxiv (Preprint)}, n. June, p. 2--6,
+doi:\href{https://doi.org/http://dx.doi.org/10.1101/055558}{http://dx.doi.org/10.1101/055558},
+2016.
+
+\hypertarget{ref-Poisot2015}{}
+POISOT, T.;; STOUFFER, D. B. e GRAVEL, D. Beyond species: Why ecological
+interaction networks vary through space and time. \textbf{Oikos}, v.
+124, n. 3, p. 243--251,
+doi:\href{https://doi.org/10.1111/oik.01719}{10.1111/oik.01719}, 2015.
+
+\end{frame}
+
+\end{document}
