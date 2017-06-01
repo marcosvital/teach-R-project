@@ -1,0 +1,187 @@
+---
+title: "The qplot function in ggplot2"
+output: html_notebook
+---
+
+## Intro to R Notebooks
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook.
+When you execute code within the notebook, 
+the results appear beneath the code. 
+
+### Execute code chunks
+Execute code chunks by clicking the *Run* button within the chunk
+or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+You can run all code chunks by pressing *Ctrl+Alt+R* or clicking the downward arrow next to the *Run* button and selecting the final option. 
+
+### Insert code chunks
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+### Preview Notebook
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+For additional useful keyboard shortcuts, please visit [this website](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts).
+
+## Goal of this notebook
+In this notebook, we will introduce the qplot function in the ggplot2 R package. This function is a great way to do quick exploratory data analysis. It is analogous to the plot function of the built-in base plotting system in R.
+
+## About
+This material is adapted from Roger Peng's [Exploratory Data Analysis Course](https://www.coursera.org/learn/exploratory-data-analysis), which is part of the [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) created Jeff Leek, Roger Peng and Brian Caffo of the Johns Hopkins Bloomberg School of Public Health. I highly recommend this Specialization!
+
+I also recommend looking at Roger Peng's [Exploratory Data Analysis Course](https://leanpub.com/exdata/), which is available for little or no money (you decide!) on [Leanpub](https://leanpub.com).
+
+You can see the original source code for the [course](https://github.com/DataScienceSpecialization/courses/tree/master/04_ExploratoryAnalysis) and [book](https://github.com/rdpeng/exdata) on [GitHub](https://github.com).
+
+
+## Load ggplot2 package
+
+```{r}
+if(!require(ggplot2)) install.packages("ggplot2")
+
+library(ggplot2)
+```
+
+
+## ggplot2 "Hello, world!"
+
+```{r}
+qplot(displ, hwy, data = mpg)
+```
+
+
+## Modifying aesthetics
+
+```{r}
+qplot(displ, hwy, data = mpg, color = drv)
+
+```
+
+
+
+## Adding a geom
+
+```{r}
+qplot(displ, hwy, data = mpg, geom = c("point", "smooth"))
+
+```
+
+
+## Histograms
+
+```{r}
+qplot(hwy, data = mpg, fill = drv)
+
+```
+
+
+
+## Facets
+
+```{r, fig.width=4.5}
+qplot(displ, hwy, data = mpg, facets = . ~ drv)
+qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
+```
+
+---
+
+## MAACS Cohort
+
+- Mouse Allergen and Asthma Cohort Study
+- Baltimore children (aged 5-17)
+- Persistent asthma, exacerbation in past year
+- Study indoor environment and its relationship with asthma morbidity
+- Publication: http://goo.gl/WqE9j8
+
+## Example: MAACS
+
+```{r}
+str(maacs)
+```
+
+
+## Histogram of eNO
+
+```{r}
+qplot(log(eno), data = maacs)
+```
+
+
+## Histogram by Group
+
+```{r}
+qplot(log(eno), data = maacs, fill = mopos)
+```
+
+
+## Density Smooth
+
+```{r, fig.width=4.5}
+qplot(log(eno), data = maacs, geom = "density")
+qplot(log(eno), data = maacs, geom = "density", color = mopos)
+```
+
+
+## Scatterplots: eNO vs. PM$_{2.5}$
+
+```{r, fig.width=2.7}
+qplot(log(pm25), log(eno), data = maacs)
+qplot(log(pm25), log(eno), data = maacs, shape = mopos)
+qplot(log(pm25), log(eno), data = maacs, color = mopos)
+```
+
+
+
+## Scatterplots: eNO vs. PM$_{2.5}$
+
+```{r}
+qplot(log(pm25), log(eno), data = maacs, color = mopos, 
+      geom = c("point", "smooth"), method = "lm")
+```
+
+
+
+## Scatterplots: eNO vs. PM$_{2.5}$
+
+```{r, fig.width=9}
+qplot(log(pm25), log(eno), data = maacs, geom = c("point", "smooth"), 
+      method = "lm", facets = . ~ mopos)
+```
+
+# A final example using the MAACS dataset
+
+## Download dataset if needed
+
+```{r}
+# make sure the maacs dataset is available in the working directory
+list.files(path=".", pattern = "maacs.Rda")=="maacs.Rda"
+# if FALSE, use this code to download the dataset
+if(!file.exists("maacs.Rda")){download.file("https://github.com/lupok2001/datasciencecoursera/blob/master/maacs.Rda", destfile = "maacs.Rda")}
+```
+
+## Load the dataset
+
+```{r}
+load("maacs.Rda")
+```
+
+## Basic Plot
+
+```{r, fig.width=9}
+qplot(logpm25, NocturnalSympt, data = maacs, facets = . ~ bmicat, 
+      geom = c("point", "smooth"), method = "lm")
+```
+
+
+## Summary of qplot()
+
+- The `qplot()` function is the analog to `plot()` but with many built-in features
+- Syntax somewhere in between base/lattice
+- Produces very nice graphics, essentially publication ready (if you like the design)
+- Difficult to go against the grain/customize (don't bother; use full ggplot2 power in that case)
+
+
+## Resources
+
+- The _ggplot2_ book by Hadley Wickham
+- The _R Graphics Cookbook_ by Winston Chang (examples in base plots and in ggplot2)
+- ggplot2 web site (http://ggplot2.org)
+- ggplot2 mailing list (http://goo.gl/OdW3uB), primarily for developers

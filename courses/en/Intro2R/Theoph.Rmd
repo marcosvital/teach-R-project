@@ -1,0 +1,270 @@
+---
+title: "Theoph Dataset: Plotting in R"
+output: html_notebook
+---
+
+## Intro to R Notebooks
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook.
+When you execute code within the notebook, 
+the results appear beneath the code. 
+
+### Execute code chunks
+Execute code chunks by clicking the *Run* button within the chunk
+or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+You can run all code chunks by pressing *Ctrl+Alt+R* or clicking the downward arrow next to the *Run* button and selecting the final option. 
+
+### Insert code chunks
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+### Preview Notebook
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+For additional useful keyboard shortcuts, please visit [this website](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts).
+
+## Goal of this notebook
+In this notebook, we will use the Theoph Dataset to practice subsetting and plotting in R. We will also learn how to create a new dataset using simulation. The dataset and plotting system are built-in, so there is not need to download any additional packages for expanded plotting capabilities. 
+
+## Exploring the Theoph dataset
+Theoph is one of many example datasets in R.
+List all built-in datasets in R.
+```{r}
+ls("package:datasets")
+```
+
+### Look at the documentation available for this dataset
+```{r}
+?Theoph
+```
+
+### Output the first few rows of a dataframe
+```{r}
+head(Theoph)
+```
+
+### Output the last few rows of a dataframe
+```{r}
+tail(Theoph)
+```
+
+### Check the number of rows
+```{r}
+nrow(Theoph)
+```
+
+### Check the number of columns
+```{r}
+ncol(Theoph)
+```
+
+### Check the column names for the dataset
+```{r}
+names(Theoph)
+```
+
+### Get summary statistics for the dataset
+```{r}
+summary(Theoph)
+```
+
+### Look at the structure of the dataset
+```{r}
+str(Theoph)
+```
+
+### Look at a row or column using [row,column] subsetting
+```{r}
+Theoph[51,]
+Theoph[,4]
+```
+
+### Look at a particular element in dataset
+```{r}
+Theoph[51,2]
+```
+
+### Look at a specific column in a dataframe
+```{r}
+Theoph$Time
+```
+
+### Calling variables without specifying the dataset produces an error
+```{r}
+plot(Time, conc)
+```
+
+### Specify the dataset using $ notation or attach the dataset
+```{r}
+plot(Theoph$Time, Theoph$conc)
+attach(Theoph) #attach a dataset to make calling variables easier
+plot(Time, conc)
+detach(Theoph) #be careful to detach before using another dataset
+```
+
+## Subset to answer simple questions about the Theoph dataset
+
+### What is the mean, median, standard deviation and variance of weight?
+```{r}
+mean(Theoph$Wt)
+median(Theoph$Wt)
+sd(Theoph$Wt)
+var(Theoph$Wt)
+```
+
+### How many Time measurements are less than 3 hours post dose?
+```{r}
+Theoph[Theoph$Time < 3,]
+```
+
+### How many rows and columns are less than 3 hours post dose?
+```{r}
+nrow(Theoph[Theoph$Time < 3,])
+ncol(Theoph[Theoph$Time < 3,])
+```
+
+### How many measurements are at pre-dose (Time zero)?
+```{r}
+Theoph[Theoph$Time==0,]
+```
+
+### How many rows and columns are at pre-dose (Time zero)?
+```{r}
+nrow(Theoph[Theoph$Time==0,])
+ncol(Theoph[Theoph$Time==0,])
+```
+
+### How many many conc measurements are above 0 at time zero?
+```{r}
+Theoph[Theoph$Time==0 & Theoph$conc > 0,]
+```
+
+### Subset individuals with weights between between 40 and 60kg
+```{r}
+Theoph[Theoph$Wt > 40 & Theoph$Wt < 60,]
+```
+
+### What is the mean of all column variables?
+```{r}
+lapply(Theoph, mean) # This does not work for column 1
+```
+
+### What is the mean conc by time (grouping variable)
+```{r}
+aggregate(Theoph$conc ~ Theoph$Time, data = Theoph, FUN = mean)
+```
+
+### What is the mean conc by time and subject (grouping variables)?
+```{r}
+aggregate(Theoph$conc, by = list(Theoph$Time, Theoph$Subject), FUN = mean)
+```
+
+## Basic plotting in R
+
+### Look at basic histogram function documentation
+```{r}
+?hist # or
+help(hist)
+```
+
+### Basic histogram plotting 
+```{r}
+par(mfrow=c(1,2)) #This is needed to make a 1 row, 2 column plot
+hist(Theoph$Wt, cex=1.5, xlab="Subject Body Weight (kg)", cex.lab=1.5, cex.axis=1.5, col="blue") #histogram 1
+hist(Theoph$Dose, cex=1.5, xlab="Theophylline Dose (mg)", cex.lab=1.5, cex.axis=1.5, col="red") #histogram 2
+```
+
+### Look at basic scatter plot function documentation
+```{r}
+?plot # or
+help(plot)
+```
+
+### Basic scatter plotting
+```{r}
+par(mfrow=c(3,3)) #This is needed to make a 3 row, 3 column plot
+plot(Theoph$Time, Theoph$conc, type = "p")
+plot(Theoph$Time, Theoph$conc, type = "l")
+plot(Theoph$Time, Theoph$conc, type = "b")
+plot(Theoph$Time, Theoph$conc, type = "c")
+plot(Theoph$Time, Theoph$conc, type = "o")
+plot(Theoph$Time, Theoph$conc, type = "h")
+plot(Theoph$Time, Theoph$conc, type = "s")
+plot(Theoph$Time, Theoph$conc, type = "S")
+plot(Theoph$Time, Theoph$conc, type = "n")
+#The plot function documentation explains each type
+```
+
+### Plot mean conc by time
+```{r}
+plot(aggregate(Theoph$conc ~ Theoph$Time, data = Theoph, FUN = mean))
+```
+
+### Make a new dataframe of mean values
+```{r}
+meanTheoph <- aggregate(Theoph$conc, by = list(Theoph$Time, Theoph$Subject), FUN = mean)
+names(meanTheoph) <- c("Time","Subject","MeanTheophConc")
+```
+
+### Plot mean Theoph by Time again
+```{r}
+plot(MeanTheophConc ~ Time, data = meanTheoph)
+```
+
+### Change size of data points and axes (cex default size is 1)
+```{r}
+plot(Theoph$Time, Theoph$conc, type = "p", cex = 1.5,
+     cex.lab = 1.5, cex.axis = 1.5)
+```
+
+### Add color to data points 
+```{r}
+plot(Theoph$Time, Theoph$conc, type = "p", cex = 1.5,
+     cex.lab = 1.5, cex.axis = 1.5, col = "blue")
+```
+
+### Add axis labels 
+```{r}
+plot(Theoph$Time, Theoph$conc, type = "p", cex = 1.5,
+     cex.lab = 1.5, cex.axis = 1.5, col = "blue",
+     xlab = "Time (hrs)", ylab = "Theophylline Conc (ng/mL)", main = "Theophylline Conc by Time")
+```
+
+### Make 1 row, 2 columns of plots 
+```{r}
+par(mfrow = c(1,2))
+hist(Theoph$Wt, cex = 1.5, xlab = "Subject Body Weight (kg)", cex.lab = 1.5, cex.axis = 1.5, col = "blue")
+hist(Theoph$Dose, cex = 1.5, xlab = "Theophylline Dose (mg)", cex.lab = 1.5, cex.axis = 1.5, col = "red")
+```
+
+##Create a unique, simulated dataframe 
+
+### Simulate gender
+```{r}
+set.seed(12345) #set seed to make dataframe creation reproducibile
+n <- 50
+is.female <- rbinom(n, 1, 0.5)
+table(is.female)
+n_fem <- sum(is.female)
+n_mal <- n - n_fem
+```
+
+### Given gender, simulate age from a uniform distribution
+```{r}
+Age_m <- runif(n_mal, 20, 60)
+Age_f <- runif(n_fem, 20, 60)
+Age <- ifelse(is.female==1, Age_f, Age_m)
+#Age and gender are not dependent
+```
+
+### Simulate Weight given age and gender
+```{r}
+wt_fem <- 65+0.02*(Age_f - 40)+rnorm(n_fem, 0, sd = 2.5)
+wt_m <- 75+0.02*(Age_m - 40)+rnorm(n_mal, 0, sd = 2.5)
+WT <- ifelse(is.female==1, wt_fem, wt_m)
+#Conditional simulation of weight 
+```
+
+### Create data.frame
+```{r}
+simdata <- data.frame(is.female = is.female, WT = WT, Age = Age)
+head(simdata)
+```
