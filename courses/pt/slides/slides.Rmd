@@ -1,0 +1,116 @@
+---
+title: |
+    | Uma breve e amigável introdução
+    | Curso básico de R para Ciências Biológicas
+author: |
+    | Marcos V.C. Vital
+date: |
+    | `r format(Sys.Date(), "%d de %B de %Y")`
+fontsize: 11pt
+output:
+  beamer_presentation: 
+    df_print: kable
+    fig_caption: no
+    fig_height: 5
+    fig_width: 6
+    includes:
+      in_header: header.tex
+    latex_engine: pdflatex
+    slide_level: 2
+    theme: metropolis
+---
+
+```{r knitr_setup, include=FALSE, cache=FALSE}
+
+library(knitr)
+
+### Chunk options ###
+
+## Text results
+opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE, size = 'footnotesize')
+
+## Code decoration
+opts_chunk$set(tidy = FALSE, comment = NA, highlight = TRUE, prompt = FALSE, crop = TRUE)
+
+# ## Cache
+opts_chunk$set(cache = TRUE, cache.path = "knitr_output/cache/")
+
+# ## Plots
+opts_chunk$set(fig.path = "knitr_output/figures/")
+opts_chunk$set(fig.align = 'center')
+
+### Hooks ###
+## Crop plot margins
+knit_hooks$set(crop = hook_pdfcrop)
+
+## Reduce font size
+# see http://stackoverflow.com/a/39961605
+# knit_hooks$set(smallfont = function(before, options, envir) {
+#   if (before) return(paste0("\n \\", options$size, "\n\n"))
+#   else return("\n\n \\normalsize \n")
+#   })
+
+```
+
+
+## **Uma breve e amigável introdução ao R**
+**O que é o R?**  
+  
+  
+- R é um software para análise e visualização de dados - e você deve começar a aprender com isso em mente.  
+  
+- R também é uma linguagem e ambiente de programação - mas você não precisa se preocupar com isso se quiser.  
+
+## **Uma breve e amigável introdução ao R**
+Por quê aprender R?   
+  
+  
+* O R é um software livre  
+  
+  
+- Grátis para usar e distribuir;  
+  
+- Aberto para modificações (veja abaixo por que isso é importante).  
+
+[em construção]
+  
+
+<!-- para incluir imagens -->
+<!-- ![](images/earth-day-2016.jpg) -->
+
+<!-- a primeira figura precisa ser inserida dessa forma. as próxima funcionarão com o chunk do include_graphics -->
+
+
+
+
+<!--INÍCIO: NOTAS TÉCNICAS------------------------------------------------------
+
+## para incluir figuras
+
+```{r out.width='4in', out.height='3in', fig.}
+include_graphics("images/3D-1.png")
+```
+
+## para incluir figuras
+
+![](images/3D-1.jpg)
+
+
+# Para controlar o tamanho das fontes
+
+https://tex.stackexchange.com/questions/24599/what-point-pt-font-size-are-large-etc
+
+Command             10pt    11pt    12pt
+\tiny               5       6       6
+\scriptsize         7       8       8
+\footnotesize       8       9       10
+\small              9       10      10.95
+\normalsize         10      10.95   12
+\large              12      12      14.4
+\Large              14.4    14.4    17.28
+\LARGE              17.28   17.28   20.74
+\huge               20.74   20.74   24.88
+\Huge               24.88   24.88   24.88
+
+- citação elegante^[Whittaker 1960 - *Ecological Monographs* 30(3):279-338]
+----FIM: NOTAS TÉCNICAS-------------------------------------------------------->

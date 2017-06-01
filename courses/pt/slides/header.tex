@@ -1,0 +1,86 @@
+% Allowing for slides with 2 columns
+\def\begincols{\begin{columns}[c]}
+\def\endcols{\end{columns}}
+\def\begincol{\begin{column}{0.5\textwidth}}
+\def\endcol{\end{column}}
+
+
+
+% Reducing black space between R code and output
+% \setlength{\topsep}{0pt}{}
+\setlength{\emergencystretch}{0em}
+\setlength{\parskip}{2pt}
+\setlength{\partopsep}{1pt}
+
+
+%%% Reducing font size of R code and output
+%%% code below from http://stackoverflow.com/a/38324868
+%%% see also http://stackoverflow.com/a/39961605
+
+% %% change fontsize of R code
+% \let\oldShaded\Shaded
+% \let\endoldShaded\endShaded
+% \renewenvironment{Shaded}{\footnotesize\oldShaded}{\endoldShaded}
+%
+% %% change fontsize of output
+% \let\oldverbatim\verbatim
+% \let\endoldverbatim\endverbatim
+% \renewenvironment{verbatim}{\footnotesize\oldverbatim}{\endoldverbatim}
+% %%%
+
+
+% code below taken from D. Eddelbuettel
+% https://github.com/eddelbuettel/samples-rmarkdown-metropolis/blob/master/header.tex
+
+%% If you have the Fira font installed, to actually have it used it
+%% via rmarkdown you need to declare it here
+% \setsansfont[ItalicFont={Fira Sans Light Italic},BoldFont={Fira Sans},BoldItalicFont={Fira Sans Italic}]{Fira Sans Light}
+% \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}
+% FRS: but this seems not able to print equations well...
+% \setsansfont{CabritoSemiNormRegular}
+% \setmonofont{Ubuntu Mono}
+
+%% You can set various Metropolis options via \metroset{} here
+\metroset{numbering=counter, progressbar=frametitle}
+
+% https://tex.stackexchange.com/questions/54905/how-to-modify-default-beamercolortheme
+
+%% You can redefine colours, mostly by borrowing from Beamer
+\setbeamercolor{frametitle}{bg=teal}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{background}{bg=white}
+\setbeamercolor{progress bar}{%
+ use=alerted text,
+ fg=orange,
+ bg=teal
+ }
+ \setbeamercolor{title separator}{
+ use=progress bar,
+ parent=progress bar
+ }
+ \setbeamercolor{progress bar in head/foot}{%
+ use=progress bar,
+ parent=progress bar
+ }
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=teal}
+% \setbeamercolor{example text}{fg=green!50!black}
+% \setbeamercolor{structure}{fg=beamer@blendedblue}
+% \setbeamercolor{background canvas}{parent=normal text}
+% \setbeamercolor{background}{parent=background canvas}
+
+
+%% You also use hyperref, and pick colors
+\hypersetup{colorlinks,citecolor=gray,filecolor=gray,linkcolor=gray,urlcolor=brown}
+
+%% when rendered with rmarkdown, somehow the unicode char for the dot
+%% disappears so we redefine it here
+\renewcommand{\textbullet}{$\cdot$}
+% \renewcommand{\itemBullet}{▸}   % unicode U+25b8 'black right pointing small triangle'
+
+%% The institute macro puts a small line for affiliation at the bottom
+\institute{Lab. de Ecologia Quantitativa, UFAL, Brazil \\ https://marcosvital.github.io}
+
+%% We can also place a logo
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{images/TeachR.png}}
