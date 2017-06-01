@@ -1,0 +1,174 @@
+---
+title: "R: Basic Concepts"
+output: html_notebook
+---
+
+## Intro to R Notebooks
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook.
+When you execute code within the notebook, 
+the results appear beneath the code. 
+
+### Execute code chunks
+Execute code chunks by clicking the *Run* button within the chunk
+or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+You can run all code chunks by pressing *Ctrl+Alt+R* or clicking the downward arrow next to the *Run* button and selecting the final option. 
+
+### Insert code chunks
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+### Preview Notebook
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+For additional useful keyboard shortcuts, please visit [this website](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts).
+
+## Goal of this notebook
+In this notebook, we will perform the basic maneuvers of [data wrangling](https://en.wikipedia.org/wiki/Data_wrangling), which is also called data munging. Everything we need is built-in, so there is not need to download any additional packages for expanded capabilities.
+
+# Our 1st object!
+```{r}
+# Let's create our first object in R!
+
+val<-3
+```
+
+When you run this code chunk, you will see that val appears in the upper right pane.
+
+We have created a value, an object with a single data element, but objects can contain many data elements.
+
+# Atomic versus recursive objects
+
+Vectors are atomic objects i.e. they contain data elements that are all of the same class
+
+Make a vector called vec: 
+```{r}
+# Let's create a vector
+vec <- c(1, 2, 3, 4, 5, 6)
+
+```
+Lists are recursive objects i.e. they can contain many different classes of objects
+
+Make a list called ls: 
+```{r}
+ls <- list(1, 2, 3, "a", "b", "c")
+```
+
+#Two-dimensional Objects
+
+Matrices are atomic objects i.e. they contain data elements that are all of the same class
+
+Make a matrix called m:  
+```{r}
+m<- matrix(c(1,2,3,4,5,6), nrow =2)
+
+```
+
+
+Data frames  are recursive objects i.e. they can contain many different classes of objects.
+
+Make a data frame called df: 
+
+```{r}
+df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+
+```
+
+
+#Subsetting Objects
+
+There are three main ways to subset objects:
+```{r}
+df[2] 
+df[y] 
+df[[2]]
+df[[y]]
+df$y
+
+```
+
+
+
+The [ ] method can return multiple objects with names included
+
+[[ ]] and $ both return single objects without names
+
+$ only works on recursive objects like lists and data frames
+$ will not work on atomic objects like vectors and matrices
+
+#Names
+
+You can subset variables by row or column names.
+
+Only the df object we created has names.
+
+You can add names:
+```{r}
+names(ls)<-c("A","B","C","D","E","F")
+names(ls)<-LETTERS[1:6]
+colnames(m)<- LETTERS[1:2]
+rownames(m)<- LETTERS[24:26]
+
+```
+
+
+You can rename columns and rows
+```{r}
+colnames(df)<- c("A","B")
+colnames(df)<- LETTERS[1:2]
+
+```
+
+
+#Adding columns
+```{r}
+#Add an unnamed third column to df and m
+
+df[,3]<-1:3
+m[,3]<-1:3
+
+#Add df to m as additional columns:
+dfmc<-cbind(df,m)
+#cbind will only work if row names match!
+
+```
+
+
+```{r}
+#Add a column named D to df
+df$D<-1:4
+#This will not work for m!
+
+```
+
+#Adding rows
+
+```{r}
+
+# Add an unnamed 4th row to df and m:
+df[4,]<-1:4
+m[4,]<-1:4
+
+# Add m to df as additional rows:
+dfmr<-rbind(df,m)
+# rbind will only work if column names match!
+
+
+```
+
+
+# Removing columns and rows
+
+```{r}
+# To delete the first column of m:
+m <- m[ ,-1]
+
+# To delete the B column of m:
+m <- m[-B]
+
+# To delete the first row of m:
+m <- m[-1, ]
+
+# To remove everything except column B in df:
+df<-df$B
+
+```
+
