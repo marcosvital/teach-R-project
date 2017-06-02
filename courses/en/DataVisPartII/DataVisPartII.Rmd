@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-In this tutorial we will learn how to use `ggplot2` to make beautiful plots of your data. If you want to know how to make basic plots in R then have a look at the tutorial [Data Visualisation Part I](../DataVisPartI/DataVisPartI).
+In this tutorial we will learn how to use `ggplot2` to make beautiful visualisations. If you want to know how to make basic plots in R then have a look at the tutorial [Data Visualisation Part I](../DataVisPartI/DataVisPartI).
 
 ## In this lesson
 
@@ -23,7 +23,7 @@ In this tutorial we will learn how to use `ggplot2` to make beautiful plots of y
 
 ## Intro to `ggplot2`
 
-Why `ggplot2`? My personal reason for choosing `ggplot2` to make my data visualisations is that this package is incredibly flexible and makes it so easy to customise your plots to make them exactly how you want them. In `ggplot2` you build plots in layers (you will see what I mean by that in the next section) and all plots have the same underlying structure. You can also plot data taken from different dataframes in the same plot and you have total control over the way your plot will look.
+Why `ggplot2`? My personal reason for choosing `ggplot2` to make my data visualisations is that this package is incredibly flexible and makes it so easy to customise your plots so that they look exactly how you want them. In `ggplot2` you build plots in layers (you will see what I mean by that in the next section) and all plots have the same underlying structure. You can also plot data taken from different dataframes in the same plot and you have total control over the way your plot will look.
 The main components of the `ggplot2` syntax are:
 
 * data: what we want to plot
@@ -31,11 +31,11 @@ The main components of the `ggplot2` syntax are:
 * geom_: the type of visualisation (bar, box, points, lines etc.)
 
 So let's dive into it! 
-In the next 4 sections we will learn how to reproduce the same type of plots that we made in [Data Visualisation Part I](../DataVisPartI/DataVisPartI) using `ggplot2`.
+In the next 4 sections you will learn how to reproduce the same type of plots that you made in [Data Visualisation Part I](../DataVisPartI/DataVisPartI) using `ggplot2`.
 
 Since `ggplot2` is not part of the standard R packages, the first thing we need to do is install the package with `install.packages()` and then load it into our R environment.
 
-```{r, echo=F, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 ```
 
@@ -47,7 +47,7 @@ We are going to use the `iris` dataset again.
 data(iris)
 ```
 
-Now we can create an object that holds the main elements of a plot, the `data` and the `aes`.
+Now we create an object, `scatter`, that will hold the main elements of a plot, the `data` and the `aes`.
 
 ```{r}
 scatter <- ggplot(data = iris, aes(x = Petal.Width, y = Petal.Length))
@@ -55,13 +55,13 @@ scatter <- ggplot(data = iris, aes(x = Petal.Width, y = Petal.Length))
 scatter
 ```
 
-As you can see calling the `scatter` object returns an empty graph, this is because we are missing an important piece of information, the `geom_`. Without this layer, `ggplot2` knows what we want to plot, but it doesn't know how to plot it. In this case, we want to plot a scatter plot, so we can give the following instructions to `ggplot2`.
+As you can see, calling the `scatter` object returns an empty graph. This is because we are missing an important piece of information, the `geom_`. Without this layer, `ggplot2` knows what we want to plot, but it doesn't know how to plot it. In this case, we want to plot a scatter plot, so we can give the following instructions to `ggplot2`.
 
 ```{r}
 scatter + geom_point()
 ```
 
-The function `geom_point` tells `ggplot2` to visualise the data as points. The `geom_` functions will inherits any aesthetics parameters from `aes`, unless overwritten. For example, we can specify that we want different colours for points belonging to different species.
+The function `geom_point` tells `ggplot2` to plot the data as points. The `geom_` functions will inherit any aesthetics parameters from `aes`, unless overwritten. For example, we can specify that we want different colours for points belonging to different species.
 
 ```{r}
 scatter + geom_point(aes(col = Species)) +
@@ -78,7 +78,7 @@ scatter + geom_point(aes(col = Species)) +
   facet_grid(~Species)
 ```
 
-We can also add a smoother to visualise the relationship more clearly. Here we use a linear model to calculate the smoother, but you can use other methods too (for exampl `gam`).
+We can also add a smoother to visualise the relationship more clearly. Here we use a linear model to calculate the smoother, but you can use other methods too (for example `glm`, `gam` etc.).
 
 ```{r}
 scatter + geom_point(aes(col = Species)) +
@@ -110,7 +110,7 @@ histog + geom_histogram(binwidth = 0.2, color = "black", aes(fill = Species)) +
   xlab("Sepal Length (cm)")
 ```
 
-We can now see the distribution of the variable `Sepal.Length` for every species.
+We can now see the distribution of the variable `Sepal.Length` for each species.
 We can also add density curves to histograms.
 
 ```{r}
@@ -163,10 +163,10 @@ my_theme <- function(){
         axis.text.y=element_text(size=10),
         axis.title.x=element_text(size=12, face="plain"),
         axis.title.y=element_text(size=12, face="plain"),
-        #panel.grid.major.x=element_blank(),
+        #panel.grid.major.x=element_blank(),                  #uncomment this to delete all horizontal lines
         panel.grid.minor.x=element_blank(),
         panel.grid.minor.y=element_blank(),
-        #panel.grid.major.y=element_blank(),
+        #panel.grid.major.y=element_blank(),                  #uncomment this to delete all vertical lines
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm"),
         plot.title = element_text(size=20, vjust=1, hjust=0.5),
         legend.text = element_text(size=12, face="italic"),
@@ -186,7 +186,7 @@ scatter + geom_point(aes(col = Species)) +
 
 ### Conclusion and further resources
 
-I hope that by now you see the advantages of using `ggplot2`. This tutorial is just a basic introduction to this package and there are many more types of visualisations that you can do with it, such as heatmaps, bubble plots, maps of spatial data etc.
+I hope that this tutorial has showed you the advantages of using `ggplot2`. This is just a basic introduction to this package and there are many more types of visualisations that you can do with it, such as heatmaps, bubble plots, maps of spatial data etc.
 
 There are plenty of resources online that you can use to make your plots even more beautiful and informative, these are some of them:
 
