@@ -15,7 +15,7 @@ Most guides here are inspired in some old tutorials I built over the last couple
 
 I’ll list every guide here as soon as they are done, so you should consider coming back here from time to time.
 
-There is nothing here right now, but the first guide should be available today and bring some space opera battles inside your R graphics.And you can expect stuff like:
+There is nothing here right now, but the first guide should be available today and bring some space opera battles inside your R graphics. And you can expect stuff like:
 - Pokemon;
 - Game of Thrones;
 - Heavy metal lyrics!
