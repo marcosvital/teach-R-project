@@ -23,14 +23,14 @@ There is a huge variety of visualisations that you can do in R. In this lesson w
 
 ## In this lesson
 
-1. [Scatterplots](#Scatterplots)
-2. [Boxplots](#Boxplots)
-3. [Histograms](#Histograms)
-4. [Barplots](#Barplots)
+1. [Scatter plots](#scatter-plots)
+2. [Box plots](#box-plots)
+3. [Histograms](#histograms)
+4. [Bar plots](#bar-plots)
 
-### Scatterplots
+### Scatter plots
 
-Scatterplots are the easiest way to visualise your data. These visualisations can help you spot outliers (very extreme or unusual values) and reveal relationships between different variables.
+Scatter plots are the easiest way to visualise your data. These visualisations can help you spot outliers (very extreme or unusual values) and reveal relationships between different variables.
 But let's get to some code! We will be using the `iris` dataset, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (*Iris setosa*, *versicolor*, and *virginica*).
 
 Use the following code to read the dataset into the R environment and inspect it.
@@ -40,7 +40,7 @@ data(iris)
 str(iris)
 ```
 
-Let's have a look at the variable `Sepal.Length`. The following code produces the scatterplot, assigns the title *Seapl Length (cm)* to the y axis and no title to the x axis.
+Let's have a look at the variable `Sepal.Length`. The following code produces the scatter plot, assigns the title *Seapl Length (cm)* to the y axis and no title to the x axis.
 
 ```{r}
 plot(iris$Sepal.Length, ylab = "Sepal Length (cm)", xlab = "")
@@ -52,7 +52,7 @@ A more interesting plot shows the relationship between the variables `Petal.Leng
 plot(iris$Petal.Length ~ iris$Petal.Width, ylab = "Petal Length (cm)", xlab = "Petal Width (cm)")
 ```
 
-This scatterplot shows a positive correlation between the two variables, so that flowers with longer petals also have thicker petals.
+This scatter plot shows a positive correlation between the two variables, so that flowers with longer petals also have thicker petals.
 We can also plot the different species in different colors, to check whether this relationship is the same in all species. The following code repeats the previous plot, changes the symbol for the points to a filled circle and assigns a different colour to data from different species.
 
 ```{r}
@@ -63,17 +63,17 @@ plot(iris$Petal.Length ~ iris$Petal.Width,
 
 From this plot we learn that the three species have different sizes of flowers and that the positive correlation between `Petal.Length` and `Petal.Width` seems to be true across species.
 
-If we wanted to visualise the relationships between all the variables in the dataset at the same time, we could use the function `pairs`, which produces a scatterplot matrix.
+If we wanted to visualise the relationships between all the variables in the dataset at the same time, we could use the function `pairs`, which produces a scatter plot matrix.
 
 ```{r}
 pairs(iris, pch = 19, col = "Green4")
 ```
 
-The last column of the matrix shows what we anticipated with the scatterplot of `Petal.Length ~ Petal.Width`, that the flowers from *Iris virginica* are bigger that those of *Iris versicolor*, which in turn are bigger that the flowers from *Iris setosa*. In the next section we will see how to improve visualisation of this type of data (categorical).
+The last column of the matrix shows what we anticipated with the scatter plot of `Petal.Length ~ Petal.Width`, that the flowers from *Iris virginica* are bigger that those of *Iris versicolor*, which in turn are bigger that the flowers from *Iris setosa*. In the next section we will see how to improve visualisation of this type of data (categorical).
 
-### Boxplots
+### Box plots
 
-Boxplots are very useful to visualise the spread of the data. They show 5 basic statistics: the minimum, the 25th percentile, the median, the 75th percentile and the maximum.
+Box plots are very useful to visualise the spread of the data. They show 5 basic statistics: the minimum, the 25th percentile, the median, the 75th percentile and the maximum.
 
 ```{r}
 boxplot(iris$Sepal.Length, col = "Red")
@@ -87,7 +87,7 @@ We can use boxplots to compare the spread and median values of a variable across
 boxplot(iris$Petal.Length ~ iris$Species, col = "Red")
 ```
 
-Very obviously the flowers from *Iris virginica* have the longest petals. The dots bolow the bottom line of *versicolor* and *setosa* are outliers.
+Very obviously the flowers from *Iris virginica* have the longest petals. The dots bolow the bottom line of *versicolor* and *setosa* are outliers, so, in these cases, the bottom lines of the boxplots do not represent the minimum. The whiskers of a boxplot extend up to 1.5 times the interquartile range, any data beyond this range is an outlier.
 
 We can also visualise more than one plot in the same panel.
 
@@ -102,4 +102,52 @@ boxplot(iris$Sepal.Length ~ iris$Species, col = "Green4", ylab = "Sepal Length (
 The command `par(mfrow = c(2,2))` splits the graphic window in 2 columns and 2 rows and the following lines plot one graph in each portion of the graphic window. 
 
 ### Histograms
+
+Histograms are very useful when you want to look at the distribution of your data. These plots divide your data into bins and then visualise the frequency distribution of those bins. As always, you can customise the colour, the title and the axes of your graph, but you can also change the bins to adapt the plot to your data.
+Let's see how it works.
+
+```{r}
+par(mfrow = c(2,1))
+
+hist(iris$Sepal.Length, col = "Orange", main = "Sepal Length (default bins)", xlab = "")
+
+hist(iris$Sepal.Length, breaks = 20, col = "Orange", main = "Sepal Length (20 bins)", xlab = "")
+```
+
+### Bar plots
+
+Barplots are useful to show cumulative totals across several groups.
+
+```{r}
+barplot(table(iris$Species), col = c("Red", "Blue", "Yellow"))
+```
+
+The function `table()` counted the number of datapoints for each species in the dataset. In this case every species has the same number of observations, 50. 
+We can also make a horizontal barplot by adding one argument to the barplot function.
+
+```{r}
+barplot(table(iris$Species), horiz = T)
+```
+
+
+In this tutorial we learnt how to make the most common type of visualisation for your biological data and how to customise your plots to make them prettier.
+R's graphic capabilities go well beyond what we have seen in this short tutorial. A few resources that you might find useful when creating visualisations for your data are listed below.
+
+* [The R graph gallery](http://www.r-graph-gallery.com)
+* [R bloggers](https://www.r-bloggers.com/)
+* [R Graphics Cookbook](https://books.google.co.uk/books?id=_iVFgKTRYrQC&printsec=frontcover&dq=data+visualisation+in+r&hl=en&sa=X&ved=0ahUKEwipr7Pk6J7UAhWDnBoKHd1vA6gQ6AEIMDAC#v=onepage&q&f=false)
+* and many more, just Google it!
+
+If you want to learn how to create beautiful visualisation with the super flexible `ggplot2` package, you can check out the tutorial [Data Visualisation Part II]().
+
+Happy visualisation!
+
+
+
+
+
+
+
+
+
 
