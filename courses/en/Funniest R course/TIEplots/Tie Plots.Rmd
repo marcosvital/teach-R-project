@@ -3,9 +3,11 @@ title: "Tie plots: graphics from a long time ago in galaxy far, far away"
 output: html_document
 ---
 
+\ 
+
 **[Marcos V C Vital](https://marcosvital.github.io)**
 
-*This document was built under R `r getRversion()` and RStudio.Version()$version, and was last update on `r Sys.time()`* 
+*This document was built under R `r getRversion()` and was last updated on `r Sys.time()`* 
 
 This guide is part of the [Open Teach-R Project](https://github.com/marcosvital/teach-R-project), and can be freely shared and is open to modification: we only ask you to keep information about the original source. Now, if you are looking at this without knowing what this project is – maybe someone send it to you by email or you found it elsewhere  – worry not! Take a look at the [project repo at GitHub](https://github.com/marcosvital/teach-R-project) for more info, and while doing that, remember to check if you are looking at the latest version of this particular script.
 
