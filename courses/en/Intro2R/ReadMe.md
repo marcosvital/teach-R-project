@@ -20,5 +20,5 @@ The lessons go in this order:
 4. [Qplot](http://htmlpreview.github.io/?https://github.com/marcosvital/teach-R-project/blob/master/courses/en/Intro2R/Qplot.nb.html), &
 5. [ggPlot](http://htmlpreview.github.io/?https://github.com/marcosvital/teach-R-project/blob/master/courses/en/Intro2R/ggPlot.nb.html)
 
-Preview the html files (code + output) with the links above or open up the R notebooks (.Rmd files) in RStudio to run the code. 
-You can also open the .Rmd files on GitHub, but you will not see output after each cell.
+Preview the html files with the links above or open up the R notebooks (.Rmd files) in RStudio to run the code. 
+You can also open the .Rmd files on GitHub.
