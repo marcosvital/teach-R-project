@@ -1,0 +1,204 @@
+---
+title: "Tie plots: graphics from a long time ago in galaxy far, far away"
+output: html_document
+---
+
+**[Marcos V C Vital](https://marcosvital.github.io)**
+
+*This document was built under R `r getRversion()` and RStudio.Version()$version, and was last update on `r Sys.time()`* 
+
+This guide is part of the [Open Teach-R Project](https://github.com/marcosvital/teach-R-project), and can be freely shared and is open to modification: we only ask you to keep information about the original source. Now, if you are looking at this without knowing what this project is – maybe someone send it to you by email or you found it elsewhere  – worry not! Take a look at the [project repo at GitHub](https://github.com/marcosvital/teach-R-project) for more info, and while doing that, remember to check if you are looking at the latest version of this particular script.
+
+\ 
+
+***
+
+\ 
+
+### The old (and boring) mean + error plots
+
+Most of us are already familiar with the “classic” means and error bar plots, which are common and widespread among papers and reports of scientific experiments. I’m talking about those guys here:
+
+```{r, echo=F}
+data(iris) #Load data
+library(sciplot) #Load package
+
+#Create boring graphic
+lineplot.CI(iris$Species, iris$Sepal.Length, xlab="Iris species", ylab="Sepal Length", las=1, type="p")
+
+#echo=F parameter will make R silently create the plot, without showing the code in the html page
+```
+
+Yes, I know, they can be very boring to look at... So you are obviously thinking “how can I make my plots look cool, super nerdy and immediately make my audience think about space opera battles with lots of lasers and explosions?!”. Right?
+
+So come with me to the dark side of R, and I shall present you the Tie Plots!
+
+![](https://cantinhodor.files.wordpress.com/2017/03/tie-plots.png)
+
+Yeah!
+
+\ 
+
+**Hey, before we continue**
+
+*OK, before we really start, let me tell you about this script. This is about building a means and errors plot in R from scratch, without using any specific packages. Of course you could use some packages for that: `sciplot` is a nice choice when using basic R graphics, or you could go with `ggplot2` if you want to. Those are perfectly god choices. This is script, however, has a hidden purpose: it can help you understanding how basic graphs work on R, and maybe it will let you know some new functions along the way. So it is all about learning and getting to know R, ok?*
+
+*Oh, and before I forgot: I got the idea for this guide when I bumped into [this nice blog post](http://the-praise-of-insects.blogspot.com.br/2012/05/alternate-way-of-plotting-means-and.html) at The Praise of Insects and its correspondent R function that is available [here at GitHub](https://github.com/sdjbrown/publicFiles/blob/master/TIEplot.R). But since this is an old function, probably built under R version 2.something, I decided to write a fresh new function with the same idea. And that’s why mine will be called TIEplot2 function, since it is the second one as far as I know. ;)*
+
+\ 
+
+***
+
+\ 
+
+### Building a common (booooring) mean+error plot in R without any packages
+
+OK, let’s go! We will have to wait a little bit before throwing our tie fighters inside our plots, and we should start out by thinking about how to build a basic means and errors plot in R from scratch. You actually don’t need to do that, you know, but you might learn a few cool things along the way, so it might be worth it.
+
+Let’s start by bringing some useful data, it is a simple task:
+
+
+```{r}
+data(iris) #Loading data
+
+summary(iris) #Taking a look at it
+```
+
+You might already know this database, it’s the classic Ronald Fisher’s flower data set! You can read about it [here](https://en.wikipedia.org/wiki/Iris_flower_data_set).
+
+OK, now we can go ahead and (sort of) manually calculate the means and standard deviation (or another measure you might like to use), which we will use ahead in the graphs. Let’s do that with the Sepal Lengths for each Iris species, ok? This is rather easy if you use `tapply` function:
+
+```{r}
+#Saving means and standard veviations:
+means<-tapply(iris$Sepal.Length, iris$Species, mean)
+s.dev<-tapply(iris$Sepal.Length, iris$Species, sd)
+
+#This will help us to build our horizontal axis:
+xlevels<-1:nlevels(iris$Species)
+
+```
+
+- Are you new to `tapply` function? It goes like this: `argument 1` is the quantitative variable you wish to use for some sort of calculation; `argument 2` is the categorical variable that will be used to break it down in classes; finally, `argument 3` will tell R what kind of statistic you want to calculate.
+- We will use that `x.levels` object soon, and you will see why we created it. ;)
+
+Nice, calculations are done, you can check out the results if you want to:
+
+```{r}
+means
+
+s.dev
+```
+
+Great! Now we can go ahead and start plotting it. The key here is to go like we were adding layers in our graph, so we add each element, one at a time. Take a look at the code bellow, and don’t worry, I’ll explain every step:
+
+```{r}
+#Plotting the means:
+plot(xlevels, means, ylim=range(c(means-s.dev, means+s.dev)), pch=16,
+    xlab="Iris species", ylab="Sepal lenght", axes=F)
+
+#Adding vertical axis:
+axis(2, las=1)
+
+#Adding horizontal axis:
+axis(1, xlevels, levels(iris$Species))
+
+#Adding a box (if you want to):
+box()
+
+#And adding error bars:
+arrows(xlevels, means-s.dev, xlevels, means+s.dev, angle=90, code=3, length=0.05)
+
+```
+
+Yeah, we got it! Now let's break it down into small steps:
+
+- we used the `plot` function to start with the means. Here our `xlevels` object was used to tell R how many horizontal axis categories we need. `ylim` was set in a way that the plot have enough room for showing the error bars. `xlab` and `ylab` were used to set up axis labels, `pch` was used to choose the symbol (the black dot) and, finally, `axes=F` was used so we could manually add the axis later (adding the species names is easier this way);
+
+- next, we used the `axis` function twice: axis number 2 is the vertical axis, and `las=1` argument makes number to be horizontally orientated (so you don’t need to turn your neck to read them!); axis number 1 is the horizontal one, and we used the `levels` function to get the species names;
+
+- finally, we used the `arrows` function to add our error bars! `angle`, `code` and `length` arguments are used to set up the arrows format, size and orientation: you can mess a little bit with them to see how they affect the plot.
+
+OK, that’s cool, we got our own code for a means + error bars plot! That’s awesome, right? 
+
+Now let’s go ahead and add some nice Star Wars action into it!
+
+\ 
+
+***
+
+\ 
+
+### Building the cool plot with some Tie Fighters inside!
+
+There is actually not a lot of new stuff from now on! The trick here is pretty simple: we will change some of the graph parameters, like colors and symbols, in a way that the "ittle dot with whiskers" thing will turn into a Tie Fighter look alike thing. ;)
+
+This is what we will do this time:
+
+```{r}
+#This is almost the same code, I'll explain the differences after the graph:
+	plot(xlevels, means, ylim=c(min(iris$Sepal.Length), max(iris$Sepal.Length)), axes=F, xlab="Iris species", ylab="Sepal Length", type="n", xlim=c(0.5, nlevels(iris$Species)+0.5))
+
+#This stays the same as before:
+	axis(2, las=1)
+	axis(1, xlevels, levels(iris$Species))
+	box()
+
+#Now we have wings:
+	arrows(xlevels, means-s.dev, xlevels, means+s.dev, angle=90, code=3,
+	length =  0.25 , col = "grey", lwd = 7.5 )
+
+#And cockpits:
+	points(xlevels, means, pch = 19, col="grey", cex = 6 )
+	points(xlevels, means, pch = 19, cex = 1.5 )
+	points(xlevels, means, pch = 8, cex = 2.5 )
+	points(xlevels, means, pch = 1, cex = 4 )
+
+```
+
+Yeahhhhhhh! :D
+
+OK, I know, I should get into the tiny details:
+
+- this time the `plot` function have more arguments and a few differences from our original function: `type="n"` avoids plotting any symbols, since this time we will add the symbols after the plot, as cockpits; and now `ylim` and `xlim` were set considering the we will use some large symbols, so we need more space;
+
+- arrows function now have a `color` argument and `lwd` was used to get thicker lines;
+
+- `points` function was used to add the cockpit layers: it’s easy to understand, just execute the code line by line and you will get it! 
+
+We did it!
+
+\ 
+
+***
+
+\ 
+
+### And now, for the `TIEplot2` function!
+
+Nice! Let’s finish this up, shall we? We will now wrap it up in a R function, so it is easy to call and we won’t need to look at the whole code every time if we don’t want to. I wrote and saved the function in a file [available here](https://github.com/marcosvital/scriptsR/blob/master/TIEplot2.R), so you can check it out if you want to. To quickly call it, use the `source` function like that:
+
+```{r}
+source("https://raw.githubusercontent.com/marcosvital/scriptsR/master/TIEplot2.R")
+```
+
+You can also download the file and source it from your local files. ;)
+
+The function will ask for four arguments, in that specific order: x variable (i.e., categorical variable), y variable (i.e., quantitative variable), x label and y label.
+
+Let's use it with another set of data:
+
+```{r}
+data(InsectSprays)
+
+TIEplot2(InsectSprays$spray, InsectSprays$count, "Sprays","Count")
+```
+
+Yay, we did it!
+
+***
+
+**That’s all for now, folks. Hope you enjoyned this little guide. Feel free to give any sort of feedback or ask any questions at our [Teach-R project repo at GitHub](https://github.com/marcosvital/teach-R-project)!**
+
+Best regards!
+
+[Marcos]((https://marcosvital.github.io))
