@@ -1,5 +1,5 @@
 ---
-title: "A short and friendly R introduction - instructor guide"
+title: "A short and friendly R introduction - course script"
 output: html_document
 ---
 
@@ -17,7 +17,7 @@ This guide is part of the [Open Teach-R Project](https://github.com/marcosvital/
 
 ### Using R for the very first time
 
-Using R for the first time can be a little intimidating, especially if you have never used any kind of command line interface before. I know the feel: you open the program, start looking at the cursor blinking in the first line, and feels as if it is asking you “now, what?”, and you just don’t know what to say… But it is easier than you think, really! R is a language, so you just have to type something that makes sense to it, and it will talk back to you. Since R understand math, you can start off with something simple, so go ahead, type a simple math operation (such as a simple addition) and type enter. You will see something like this:
+Using R for the first time can be a little intimidating, especially if you have never used any kind of command line interface before. I know the feel: you open the program, start looking at the cursor blinking in the first line, and feels as if it is asking you “now, what?”, and you just don’t know what to say… But it is easier than you think, really! R is a language, so you just have to type something that makes sense to it, and it will talk back to you. Since R understand math, you can start off with something simple, so go ahead, go to the console (the cosole is that main R window, that is waiting for you to type something) and type a simple math operation - such as a simple addition - and type enter. You will see something like this:
 
 ```{r}
 10 + 10
@@ -41,4 +41,60 @@ Oh, you can also use `^`to assign a power operation, just like this:
 3^2
 ```
 
-*this is under construction*
+Now, you might have noticed that every answer came after a little `[1]`. We will get into that later, so just ignore it for now.
+
+***
+
+### Understating R functions
+
+OK, that's good, so let's move forward and go for a simple square root calculation, that will go like this:
+
+```{r}
+sqrt(9)
+```
+
+Things were a little different right now, and that's because we used a **function**. Functions are the core of our own communication with R: it's the way we tell R to do something for us. Every function will work in the same basic format: `function.name(argument.1, argument.2, etc)`.
+
+The arguments are the detailed information we need to pass to R so it can do exactly what we want. So, for our little `sqrt` function above, we told are that we want it to calculate the square root of nine, so the number 9 was an argument.
+
+Arguments are always separated by commas, and you can add one or more blank spaces between them if you want to (this usually help to get the code more easy to read by us, human beings).
+
+Let's see another pretty simple math function, but this time we will use two arguments:
+
+```{r}
+log(100, 10)
+```
+
+This time we told R to calculate the logarithm of 100 using base 10 (a.k.a. common base). So both 100 and 10 were arguments in this function, but there is a catch: R only understood it correctly because we wrote it on this specific order (i.e., first the number, then the base). Now you might be asking: how would I know that the arguments were supposed to be written in this order? Well, let's find out!
+
+***
+
+### R help system!
+
+One major features inside R is the help system, and once you get the hang of it, things will only get easier for you. The basic help function is, duh, `help`. So you can go ahead and type:
+
+```{r}
+help(log)
+```
+
+This will open the help documentation for that function. There is a lot of technical detail inside that, and you shouldn’t worry to understand everything, ok? Just go through  the 'description' section, take a look at the 'usage' and 'arguments' sections and, last but not least, check out 'see also' and 'examples' sections by the end, those two are usually very useful!
+
+Now, help is such a lovely and useful function that can be called in a special way. So, instead of typing `help` you can just use a `?` and go for it! Check it out:
+
+```{r}
+?log
+```
+
+Pretty cool, uh?
+
+OK, it might have occurred for you that using the help system seems to be easy, but only if you already know the function name. And yes, you are indeed right! So it might be useful to know another help function: `help.search`.
+
+As the name implies, this function will search for functions related to the search terms you enter. Now, please remember that this time you have to write the search term or expression under quotation marks. So, imagine that you didn’t know about the `log` function and was looking for it. You could type:
+
+```{r}
+help.search("logarithm")
+```
+
+This time we are asking R to look for this search term inside its functions. Please keep in mind that the result will be different depending on the packages that are currently installed in your computer, ok? We will get into packages later, so that's just another thing not to worry about right now.
+
+*this is still under construction*
