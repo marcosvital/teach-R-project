@@ -1,0 +1,197 @@
+---
+title: "Data Visualisation Part II"
+author: "Francesca Mancini"
+date: "2 June 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this tutorial we will learn how to use `ggplot2` to make beautiful visualisations. If you want to know how to make basic plots in R then have a look at the tutorial [Data Visualisation Part I](../DataVisPartI/DataVisPartI).
+
+## In this lesson
+
+1. [Intro to `ggplot2`](#intro-to-ggplot2)
+2. [Scatter plots](#scatter-plots)
+3. [Box plots](#box-plots)
+4. [Histograms](#histograms)
+5. [Bar plots](#bar-plots)
+6. [Themes](#themes)
+7. [Conclusion and further resources](#conclusion-and-further-resources)
+
+## Intro to `ggplot2`
+
+Why `ggplot2`? My personal reason for choosing `ggplot2` to make my data visualisations is that this package is incredibly flexible and makes it so easy to customise your plots so that they look exactly how you want them. In `ggplot2` you build plots in layers (you will see what I mean by that in the next section) and all plots have the same underlying structure. You can also plot data taken from different dataframes in the same plot and you have total control over the way your plot will look.
+The main components of the `ggplot2` syntax are:
+
+* data: what we want to plot
+* aes: the aesthetics of the plots, such as the x and y variables, the colours, size etc.
+* geom_: the type of visualisation (bar, box, points, lines etc.)
+
+So let's dive into it! 
+In the next 4 sections you will learn how to reproduce the same type of plots that you made in [Data Visualisation Part I](../DataVisPartI/DataVisPartI) using `ggplot2`.
+
+Since `ggplot2` is not part of the standard R packages, the first thing we need to do is install the package with `install.packages()` and then load it into our R environment.
+
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+```
+
+### Scatter plots
+
+We are going to use the `iris` dataset again.
+
+```{r}
+data(iris)
+```
+
+Now we create an object, `scatter`, that will hold the main elements of a plot, the `data` and the `aes`.
+
+```{r}
+scatter <- ggplot(data = iris, aes(x = Petal.Width, y = Petal.Length))
+
+scatter
+```
+
+As you can see, calling the `scatter` object returns an empty graph. This is because we are missing an important piece of information, the `geom_`. Without this layer, `ggplot2` knows what we want to plot, but it doesn't know how to plot it. In this case, we want to plot a scatter plot, so we can give the following instructions to `ggplot2`.
+
+```{r}
+scatter + geom_point()
+```
+
+The function `geom_point` tells `ggplot2` to plot the data as points. The `geom_` functions will inherit any aesthetics parameters from `aes`, unless overwritten. For example, we can specify that we want different colours for points belonging to different species.
+
+```{r}
+scatter + geom_point(aes(col = Species)) +
+  xlab("Petal Width (cm)") + ylab("Petal Length (cm)")
+```
+
+As you can see, `ggplot2` automatically adds a legend to the plot (handy, right?!), which you can also customise. 
+
+What if we wanted to display the relationship between these two variables for each of the species in separate plots? We can use `facet`.
+
+```{r}
+scatter + geom_point(aes(col = Species)) +
+  xlab("Petal Width (cm)") + ylab("Petal Length (cm)") +
+  facet_grid(~Species)
+```
+
+We can also add a smoother to visualise the relationship more clearly. Here we use a linear model to calculate the smoother, but you can use other methods too (for example `glm`, `gam` etc.).
+
+```{r}
+scatter + geom_point(aes(col = Species)) +
+  xlab("Petal Width (cm)") + ylab("Petal Length (cm)") +
+  facet_grid(~Species) + geom_smooth(method = "lm", aes(col = Species))
+```
+
+### Box plots
+
+Now let's recreate the boxplot of `Petal.Length` for each species.
+
+```{r}
+box.plot <- ggplot(data = iris, aes(y = Petal.Length, x = Species)) +
+  geom_boxplot(aes(fill = Species)) + ylab("Petal Length (cm)") +
+  xlab("Species")
+
+box.plot
+
+```
+
+### Histograms
+
+In Data Visualisation Part I we created a histogram for the variable `Sepal.Length`, we can now do the same using `ggplot2`.
+
+```{r}
+histog <- ggplot(data = iris, aes(x = Sepal.Length))
+
+histog + geom_histogram(binwidth = 0.2, color = "black", aes(fill = Species)) +
+  xlab("Sepal Length (cm)")
+```
+
+We can now see the distribution of the variable `Sepal.Length` for each species.
+We can also add density curves to histograms.
+
+```{r}
+histog + geom_histogram(binwidth = 0.2, color = "black", aes(fill = Species, y = ..density..)) +
+  xlab("Sepal Length (cm)") + geom_density(stat = "density", alpha = 0.7, aes(fill = Species))
+```
+
+### Bar plots
+
+The `iris` dataset contains the same number of observations for each species. In the next chunck of code we will resample the dataset, just so we can have a less boring barplot.
+
+```{r}
+set.seed(1353)
+iris.resample <- iris[sample(1:nrow(iris), 100, replace = T), ]
+```
+
+Now let's make a bar plot to visualise the number of observations for each species.
+
+```{r}
+bar <- ggplot(data = iris.resample, aes(x = Species))
+bar + geom_bar(aes(fill = Species))
+
+```
+
+Something I like to do sometimes with bar plots is to display them as radial plots. With `ggplot2` it couldn't be easier.
+
+```{r}
+bar <- ggplot(data = iris.resample, aes(x = Species))
+bar + geom_bar(aes(fill = Species)) + coord_polar()
+
+```
+
+### Themes
+
+You have probably noticed that all the plots that we have produced so far in this tutorial have a grey background with gridlines. That is part of the default theme in `ggplot2`. As everything else in a plot, we can easily change that.
+
+```{r}
+scatter + geom_point(aes(col = Species)) +
+  xlab("Petal Width (cm)") + ylab("Petal Length (cm)") +
+  facet_grid(~Species) + geom_smooth(method = "lm", aes(col = Species)) +
+  theme_bw() 
+```
+
+You can spend some time playing with all the different themes that are availble in `ggplot2` or you can make your own! For example:
+
+```{r}
+my_theme <- function(){
+  theme_bw()+
+  theme(axis.text.x=element_text(size=10, angle=45, vjust=1, hjust=1),
+        axis.text.y=element_text(size=10),
+        axis.title.x=element_text(size=12, face="plain"),
+        axis.title.y=element_text(size=12, face="plain"),
+        #panel.grid.major.x=element_blank(),                  #uncomment this to delete all horizontal lines
+        panel.grid.minor.x=element_blank(),
+        panel.grid.minor.y=element_blank(),
+        #panel.grid.major.y=element_blank(),                  #uncomment this to delete all vertical lines
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm"),
+        plot.title = element_text(size=20, vjust=1, hjust=0.5),
+        legend.text = element_text(size=12, face="italic"),
+        legend.title = element_text(size = 12, face = "bold"))
+}
+```
+
+
+And now try it.
+
+```{r}
+scatter + geom_point(aes(col = Species)) +
+  xlab("Petal Width (cm)") + ylab("Petal Length (cm)") +
+  facet_grid(~Species) + geom_smooth(method = "lm", aes(col = Species)) +
+  my_theme() 
+```
+
+### Conclusion and further resources
+
+I hope that this tutorial has showed you the advantages of using `ggplot2`. This is just a basic introduction to this package and there are many more types of visualisations that you can do with it, such as heatmaps, bubble plots, maps of spatial data etc.
+
+There are plenty of resources online that you can use to make your plots even more beautiful and informative, these are some of them:
+
+* `ggplot2` [cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
+* Data Carpentry [lesson](http://www.datacarpentry.org/R-ecology-lesson/04-visualization-ggplot2.html)
+* Elegant Graphics for Data Analysis [book](http://www.springer.com/br/book/9780387981413)
+
+Happy visualitation!
