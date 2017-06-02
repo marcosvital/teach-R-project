@@ -1,0 +1,45 @@
+#Algumas noções iniciais no R#
+#Minicurso do R#
+#Arthur Filipe da Silva#
+
+#O R como calculadora:
+2+2
+2*2
+2-2
+
+#Podemos calcular também algumas funções um pouco mais complexas:
+sqrt(49)
+log(100, 10)
+
+#Criando objetos no R:
+arthur <- 30
+arthur
+mesa <- 15
+mesa
+arthur+mesa
+
+#Criando objetos para sequências numéricas:
+sequência1 <- c(1:10)
+sequência1
+sequência2 <- c(30, 15, 20)
+sequência2
+
+#Criando objetos com palavras:
+palavra <- "carro"
+palavra
+palavras <- c("carro", "mesa")
+palavras
+
+ls()
+#O comando 'ls()' lista os objetos guardados na memória do R.
+
+#Utilizando as funções de ajuda do R:
+
+#Quando não sabemos como utilizar determinada função:
+?mean
+
+#Quando não sabemos qual o nome da função:
+??mean
+
+#Para termos com mais de uma palavra:
+help.search("linear regression")
