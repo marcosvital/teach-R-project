@@ -1,6 +1,6 @@
 ## The Funniest R course in the World
 
-Yes, I know: if you got the [reference in the title](https://www.youtube.com/watch?v=ienp4J3pW7U), you might be thinking that this should be a Python course... Well, Python is great, but R can be very fun too, and I will show you that (hopefully)!
+Yes, I know: if you got the [reference in the title](https://www.youtube.com/watch?v=ienp4J3pW7U), you might be thinking that this should be a Python course... Well, Python is great, but R can be very fun too, and I will show you that (hopefully)! And [look at the bright side](https://www.youtube.com/watch?v=WlBiLNN1NhQ): this one will not kill you. ;)
 
 ### And now for something completely different!
 (I’l try to stop with the [Monty Python references](https://www.youtube.com/watch?v=FGK8IC-bGnU) soon… I mean, probably)
