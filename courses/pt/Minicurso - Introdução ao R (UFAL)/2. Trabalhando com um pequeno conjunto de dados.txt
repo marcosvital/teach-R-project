@@ -1,0 +1,34 @@
+#Trabalhando com um pequeno conjunto de dados#
+#Minicurso do R#
+#Arthur Filipe da Silva#
+
+#Escolhendo o diretório de trabalho:
+setwd(choose.dir())
+
+#Conferindo o diretório de trabalho:
+getwd()
+
+#Para saber quais arquivos estão armazenados no diretório:
+dir()
+
+#Importando e lendo os dados da planilha:
+dados <- read.table("Teste.txt", h=T)
+head(dados)	#Lê as 6 primeiras linhas.
+tail(dados)	#Lê as 6 últimas linhas.
+summary(dados)	#Apresenta algumas estatísticas descritivas dos dados.
+str(dados)	#Apresenta a natureza dos dados.
+
+#Analisando variáveis de modo particular:
+dados$Ambiente
+dados$Riqueza
+dados$Temperatura
+
+attach(dados)	#Reconhece as variáveis.
+
+#Analisando algumas características dos dados:
+
+#O tipo de ambiente influencia a riqueza de espécies?
+boxplot(Riqueza~Ambiente, las=1, xlab="Tipo de ambiente", ylab="Riqueza de espécies")
+
+#A temperatura influencia a riqueza de espécies?
+plot(Riqueza~Temperatura, las=1, pch=20)

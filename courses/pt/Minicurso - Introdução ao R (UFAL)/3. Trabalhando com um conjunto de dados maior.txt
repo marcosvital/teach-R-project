@@ -1,0 +1,43 @@
+#Trabalhando com um conjunto de dados maior#
+#Minicurso do R#
+#Arthur Filipe da Silva#
+
+#Importando e lendo os dados da planilha:
+setwd(choose.dir())
+dados <- read.table("Prática1.txt", h=T)
+head(dados)
+summary(dados)
+attach(dados)
+
+#Filtrando informações do conjunto de dados:
+#Estrutura: 'nomedoobjeto[linha, coluna]'
+dados[10, 3]
+dados[10,]
+dados[, 3]
+dados[(10:20), (3:5)]
+dados[, c(3, 5)]
+
+#Combinando condições:
+
+#1. Riqueza de espécies no ambiente primário:
+Riqueza[Ambiente=="primário"]
+
+#2. Riqueza de espécies no ambiente secundário:
+Riqueza[Ambiente=="secundário"]
+
+#3. Média da riqueza de espécies no ambiente primário:
+mean(Riqueza[Ambiente=="primário"])
+
+#4. Média da riqueza de espécies no ambiente secundário:
+mean(Riqueza[Ambiente=="secundário"])
+
+#Agora, vamos construir um histograma para 'Riqueza':
+hist(Riqueza, las=1, breaks=3, ylab="Frequência", main=NULL, col="gray")
+
+#Manipulando o tamanho dos números com 'cex.axis':
+hist(Riqueza, las=1, breaks=3, ylab="Frequência", main=NULL, col="gray",
+cex.axis=1.2)
+
+#Manipulando o tamanho das letras com 'cex.lab':
+hist(Riqueza, las=1, breaks=3, ylab="Frequência", main=NULL, col="gray",
+cex.axis=1.2, cex.lab=1.2)

@@ -1,0 +1,9 @@
+Ambiente	Riqueza	Temperatura
+primário	12	35
+primário	15	30
+primário	10	25
+primário	18	27
+secundário	21	27
+secundário	25	21
+secundário	15	22
+secundário	22	24

@@ -1,0 +1,32 @@
+#Minicurso - Introdução ao uso do R#
+##Breve guia para o ministrante##
+
+Olá, seja bem-vindo ao material de minicurso do R! Meu nome é Arthur Filipe, sou formado em Ciências Biológicas na Universidade Federal de Alagoas, e o material que você vai encontrar nesta pasta foi criado a partir de um minicurso de introdução ao uso do software R que eu ministrei em 2016, no evento de aniversário de 5 anos do Laboratório de Ecologia Quantitativa, aqui da UFAL. É importante que você saiba que este material é adequado para um curso de curta duração (este que eu ministrei, por exemplo, foi de 4 horas); portanto, é ideal para visar um público mais iniciante, que tem pouca ou nenhuma familiaridade com esta linguagem.
+
+A seguir, vou lhe explicar um pouco sobre cada arquivo desta pasta, e como cada um pode ser utilizado:
+
+- Slides
+
+O arquivo "Minicurso de R - LEQ" consiste numa apresentação simples do tema proposto. Ele conta um pouco a história do R, explica para que ele serve, e fornece algumas dicas úteis para dominar esta ferramenta.
+
+- Arquivos
+
+Os arquivos "Teste.txt" e "Prática1.txt" são os dados com os quais os participantes "brincarão" no R. Ambos os bancos de dados são fictícios (eu criei o primeiro, e o segundo foi criado pelo professor Marcos Vital, que geralmente o utiliza nas aulas práticas de R na UFAL, para a disciplina de Bioestatística).
+
+- Scripts
+
+Os arquivos em "txt" estão numerados de acordo com a ordem que devem ser criados durante o próprio curso.
+
+"1. Algumas noções iniciais no R.txt"
+
+Como o próprio nome diz, é um script bem introdutório, que explora algumas funcionalidades bem básicas do R, como para calculadora, e criação de sequências e objetos. Ele também informa algumas funções para buscar informações dentro do próprio R.
+
+"2. Trabalhando com um pequeno conjunto de dados.txt"
+
+O conjunto de dados utilizado aqui é "Teste.txt"; este script vai mostrar como escolher um diretório, como importar um arquivo para o R, e como explorar brevemente os dados.
+
+"3. Trabalhando com um conjunto de dados maior.txt"
+
+Aqui o banco de dados usado será "Prática1.txt"; este script apresenta algumas funções um pouco mais complexas, e ensina a elaborar gráficos simples.
+
+- Uma última dica: é importante que você tenha em mente que tanto os scripts, quanto os dados, e até mesmo a apresentação são apenas guias de como elaborar um minicurso de introdução ao R, podendo muito bem ser modificados. Espero que este material possa ser útil, tanto para o ensino, como também (e principalmente!) para o aprendizado do R :)
