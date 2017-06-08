@@ -3,8 +3,8 @@ title: "Data Visualization - ggplot2"
 author: "Sachin Pawaskar"
 date: "5/31/2017"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 startdate: 5/20/2017
 enddate: 6/08/2017
 ---
@@ -870,3 +870,12 @@ grid.text(paste0("R² = ",
     + Workshops materials: http://dss.iq.harvard.edu/workshop-materials
     + Workshop schedule and registration: http://dss.iq.harvard.edu/workshop-registration
 
+# Acknowledgements/References
+
+* ggplot2 resources
+    + Wiki: https://github.com/hadley/ggplot2/wiki
+    + Website: http://had.co.nz/ggplot2/
+    + StackOverflow: http://stackoverflow.com/questions/tagged/ggplot
+    + Research technology consulting: http://dss.iq.harvard.edu
+    + Workshops materials: http://dss.iq.harvard.edu/workshop-materials
+    + Workshop schedule and registration: http://dss.iq.harvard.edu/workshop-registration
