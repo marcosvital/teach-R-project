@@ -30,7 +30,7 @@ Oh, you can also check out the project Roadmap, it is being built [right here](h
 
 Oh yeah, those are important!
 
-This project is being built during [Mozilla Open Leadership Training 2017](https://mozilla.github.io/open-leadership-training-series/), and we are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
+This project was built during [Mozilla Open Leadership Training 2017](https://mozilla.github.io/open-leadership-training-series/), and we are sticking to Mozilla Community Participation Guidelines, so please take a [look at it here](https://www.mozilla.org/en-US/about/governance/policies/participation/).
 
 ### Project Logo!
 
